@@ -51,6 +51,13 @@ public class GameTest {
         assertThat(game.getScore(), is(26));
     }
 
+    @Test
+    public void perfectGame() {
+        rollMany(10, 10);
+        game.roll(10);
+        assertThat(game.getScore(), is(290));
+    }
+
     private void rollStrike() {
         game.roll(10);
     }
