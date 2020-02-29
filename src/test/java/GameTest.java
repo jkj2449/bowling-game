@@ -34,12 +34,30 @@ public class GameTest {
 
     @Test
     public void oneSpare() {
-        game.roll(5);
-        game.roll(5);
+        rollSpare();
         game.roll(3);
         rollMany(17, 0);
 
         assertThat(game.getScore(), is(16));
+    }
+
+    @Test
+    public void onStrike() {
+        rollStrike();
+        game.roll(5);
+        game.roll(3);
+        rollMany(16, 0);
+
+        assertThat(game.getScore(), is(26));
+    }
+
+    private void rollStrike() {
+        game.roll(10);
+    }
+
+    private void rollSpare() {
+        game.roll(5);
+        game.roll(5);
     }
 
     private void rollMany(int pins, int frame) {
